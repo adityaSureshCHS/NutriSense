@@ -1,10 +1,6 @@
 import os 
-from flask import Flask, request, render_template, redirect, url_for
 import cv2 as cv
-import pytesseract
-from openai import OpenAI
-
-client = OpenAI()
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -25,25 +21,31 @@ def results():
         global data
         data = request.form['image']
         print(data)
-        response = client.chat.completions.create(
-            model="gpt-4o",
-            messages=[
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer sk-proj-SzMfABSwegh6iXPuHjndT3BlbkFJs3o3bUb6FdlYRoMUAIyM"
+        }
+        
+        payload = {
+            "model": "gpt-4o",
+            "messages": [
                 {
-                    "role": "user",
+                    "role":"user",
                     "content": [
-                        {"type": "text", "text": "What are all the ingredients listed under the INGREDIENTS paragraph?"},
+                        {
+                            "type": "text",
+                            "text": "What is the text paragraph inside of the ingredients section?"
+                        },
                         {
                             "type": "image_url",
                             "image_url": {
-                                "url": data,
-                            },
-                        },
-                    ],
-                 }
-            ],
-            max_tokens=300,
-        )
-        
-        
-        print(response.choices[0])
+                                "url": data
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+        response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
+        print(response.json)
     return render_template("results.html")
