@@ -5,7 +5,7 @@ from openai import OpenAI
 import pytesseract
 
 client = OpenAI(
-    api_key = os.environ.get("OPENAI_API_KEY")
+   
 )
 
 app = Flask(__name__)
