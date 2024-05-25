@@ -1,39 +1,84 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>NutriSense</title>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <script src="https://cdn.tailwindcss.com"></script></head>-->
+<!--<body>-->
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-4 mb-4">-->
+<!--        <a class="navbar-brand" href="#">Nutrisense</a>-->
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--          <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--          <ul class="navbar-nav">-->
+<!--            <li class="nav-item active">-->
+<!--              <a class="nav-link" href="#">Home</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="photo.html">Take a Photo</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="results.html">Results</a>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </nav>-->
+<!--      -->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>-->
+<!--    <form action = "/success" method = "post" enctype="multipart/form-data">-->
+<!--        <input type="file" name="file" />-->
+<!--        <input type = "submit" value="Upload">-->
+<!--    </form>-->
+<!--    -->
+
+
+<!--    <a id = "click"href="{{path}}">  This is the actual thing go to here to move on disregard the above code</a>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html>
+<html lang="en" class="bg-gray-200">
 <head>
     <title>NutriSense</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script></head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-4 mb-4">
-        <a class="navbar-brand" href="#">Nutrisense</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="photo.html">Take a Photo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="results.html">Results</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <form action = "/success" method = "post" enctype="multipart/form-data">
-        <input type="file" name="file" />
-        <input type = "submit" value="Upload">
-    </form>
-    
+<nav class="bg-blue-500 p-4 text-white flex justify-between">
+    <a class="text-2xl" href="#">nutrisense</a>
+    <div class="hidden md:flex">
+        <a class="mx-2 hover:underline" href="#">Home</a>
+        <a class="mx-2 hover:underline" href="photo.html">Take a Photo</a>
+        <a class="mx-2 hover:underline" href="results.html">Results</a>
+    </div>
+    <button class="md:hidden flex items-center p-1">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+</nav>
+<div class="container mx-auto p-4 flex">
+    <div class="w-7/10 bg-white p-4 rounded shadow">
+        <p>Our Motivation
+In today's fast-paced world, many of us consume packaged and processed foods without fully understanding the ingredients they contain. Often, we glance at the nutritional labels and ingredient lists without comprehending the potential impact these components can have on our health. This lack of knowledge can lead to poor dietary choices and, ultimately, adverse health outcomes.
 
+The Problem
+The complexity and obscurity of ingredient lists on food labels can be daunting. Many of the terms used are scientific or technical, making it difficult for the average consumer to know what they are eating. Additionally, the health implications of various ingredients are not always clear, leaving consumers in the dark about how their food choices may affect their well-being.
 
-    <a id = "click"href="{{path}}">  This is the actual thing go to here to move on disregard the above code</a>
+Our Solution: Nutrisense
+To address this gap in knowledge and help people make informed dietary choices, we created Nutrisense. Nutrisense is a revolutionary website designed to demystify food labels and ingredients for the everyday consumer. Our platform allows users to scan the information on the back of any food product and receive detailed explanations about each ingredient, including:
+
+What the ingredient is: Clear, easy-to-understand descriptions of each component found in the food.
+Why it is used: Information on the purpose of the ingredient in the product, whether it's a preservative, flavoring agent, or nutrient.
+Health implications: Insights into how each ingredient can affect your health, based on current scientific research and nutritional guidelines.
+By providing this comprehensive information, Nutrisense empowers consumers to make healthier choices and fosters greater transparency in the food industry. Our goal is to bridge the gap between food labels and consumer knowledge, promoting a more health-conscious society.</p>
+    </div>
+    <div class="w-3/10">
+        <!-- Your photo goes here -->
+    </div>
+</div>
 </body>
 </html>
