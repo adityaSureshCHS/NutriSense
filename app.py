@@ -1,6 +1,10 @@
 import os 
 import cv2 as cv
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for, redirect
+from openai import OpenAI
+import pytesseract
+
+client = OpenAI()
 
 app = Flask(__name__)
 
@@ -27,11 +31,11 @@ def results():
                 {
                     "role": "user",
                     "content": [
-                        {"type": "text", "text": "What’s in this image?"},
+                        {"type": "text", "text": "What are the ingredients listed in the ingredient section of this image"},
                         {
                             "type": "image_url",
                             "image_url": {
-                            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
+                            "url": data,
                             },
                         },
                     ],
