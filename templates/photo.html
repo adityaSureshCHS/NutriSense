@@ -1,0 +1,79 @@
+<html> 
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <title> Take Photo of the Bag </title>
+    </head>
+    <body>
+        <div class="container">
+  
+            <h1 class="title">Picture Taker</h1>
+            <p class="description">Click the button below to capture a picture of the item.</p>
+            <video id="camera-view" autoplay></video>
+            <a href="#" class="button" onclick="takePicture()">Take Picture</a>
+            <input type="file" accept="image/*" class="file-input" id="upload-input" onchange="uploadPicture(event)">
+            <label for="upload-input" class="upload-button">Upload Photo</label>
+            <a href="{{path}}" class="proceed-button">Proceed</a>
+        </div>    
+        
+        <script> 
+            // Access the camera and display the video stream
+  navigator.mediaDevices.getUserMedia({ video: true })
+  .then(function(stream) {
+    var video = document.getElementById('camera-view');
+    video.srcObject = stream;
+    video.play();
+  })
+  .catch(function(err) {
+    console.log('Error accessing the camera: ', err);
+  });
+
+  // Function to capture the picture
+  function takePicture() {
+    var video = document.getElementById('camera-view');
+    var canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    var dataURL = canvas.toDataURL('image/png');
+    console.log(dataURL);
+    // You can send the dataURL to the server for further processing or display it on the page
+    
+    // Hide other buttons and show the proceed button
+    $('.button, .upload-button').hide();
+    $('.proceed-button').show();
+    sendData(dataURL);
+  }
+
+   // Function to upload photo
+   function uploadPicture(event) {
+    var file = event.target.files[0];
+    if (file) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var dataURL = e.target.result;
+        console.log(dataURL);
+        // You can send the dataURL to the server for further processing or display it on the page
+
+        // Hide other buttons and show the proceed button
+        $('.button, .upload-button').hide();
+        $('.proceed-button').show();
+        sendData(dataURL);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function sendData(dataURL){
+    $.ajax({
+      type: "POST",
+      url:"{{ path }}",
+      data: {
+        image: dataURL
+      }
+    });
+  }
+        </script>
+    </body>
+</html>
