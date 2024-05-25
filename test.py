@@ -1,16 +1,9 @@
-from openai import OpenAI
-import os
-client = OpenAI(
-    api_key = os.environ.get("OPENAI_API_KEY")
-    
-)
+import google.generativeai as genai
+import PIL.Image
+gemini_key = "AIzaSyCvHRoH7oHsJa8J2D4kZIOJ5qxG4ZNHXm0"
 
-completion = client.chat.completions.create(
-  model="gpt-3.5-turbo",
-  messages=[
-    {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
-    {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
-  ]
-)
-
-print(completion.choices[0].message)
+genai.configure(api_key = gemini_key)
+model = genai.GenerativeModel('gemini-pro-vision')
+img = PIL.Image.open("burn.jpg")
+response = model.generate_content(["Identify the ingredients. List each ingredient. Do not add extra characters, dashes, parenthesis, or commas. List the ingredients", img])
+print(response.text)
