@@ -16,6 +16,7 @@
         </div>    
         
         <script> 
+          $('.proceed-button').hide();
           // Access the camera and display the video stream
   navigator.mediaDevices.getUserMedia({ video: true })
   .then(function(stream) {
@@ -41,7 +42,7 @@
     // You can send the dataURL to the server for further processing or display it on the page
     
     // Hide other buttons and show the proceed button
-    $('.button, .upload-button').hide();
+    $('.button, .upload-button, .file-input').hide();
     $('.proceed-button').show();
     sendData(dataURL);
   }
@@ -57,7 +58,7 @@
         // You can send the dataURL to the server for further processing or display it on the page
 
         // Hide other buttons and show the proceed button
-        $('.button, .upload-button').hide();
+        $('.button, .upload-button, .file-input').hide();
         $('.proceed-button').show();
         sendData(dataURL);
       };

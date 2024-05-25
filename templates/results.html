@@ -22,36 +22,43 @@
         </div>
       </div>
       <div class="flex items-center place-content-center">
+        <button id = "button" onclick="run"> Display Results </button>
         <h1 class="m-3 text-center text-3xl font-mono bg-emerald-800 w-48 h-10 rounded-md">
             RESULTS:
         </h1>
       </div>
 
       <div>
-        <div class="m-2.5 text-primary-content flex flex-wrap gap-1.5 ">
-            <div class="bg-cyan-400 card-body rounded-md">
-                <h2 class="card-title">Card title!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div class="card-actions justify-end">
-                    <button class="btn">More Info</button>
-                </div>
-            </div>
-
-            <div class="bg-cyan-400 card-body rounded-md">
-                <h2 class="card-title">Card title!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div class="card-actions justify-end">
-                    <button class="btn">More Info</button>
-                </div>
-            </div>
+        <div id = "grid" class="m-2.5 text-primary-content flex flex-wrap gap-1.5 ">
             
         </div>
      </div>
       
+    <script> 
+      function run(){
+        var val = {{ list1 }}
+        var val2 = {{ list2 }}
+        for (let i = 0; i < val.length; i++){
+          if (val[i] !== '' && val[i] !== ' '){
+            var name = val[i];
+            var text =  val2[i]
+            
+            
+           
+            
+          }
+        }
+      }
+$("#button").onClick
+
       
+
+    </script>
       
     
 
 
 </body>
+
+
 </html>

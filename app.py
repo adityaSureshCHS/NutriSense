@@ -33,6 +33,15 @@ def results():
         img = PIL.Image.open(io.BytesIO(data))
         model = genai.GenerativeModel('gemini-pro-vision')
         response = model.generate_content(["Identify the ingredients. List each ingredient. Do not add extra characters, dashes, parenthesis, or commas. List the ingredients", img])
-        print(response.text)
+        global list1
+        list1 = response.text.split("\n")
+        model = genai.GenerativeModel('gemini-pro')
+        response2 = model.generate_content(f"Using the following ingredients: {response.text} write a short paragraph explaining what each ingredient is/does, health risks, benefits and why combined they can be either harmful or healthy.")
         
-    return render_template("results.html")
+        global list2
+        list2 = response2.text.split("\n")
+        filter(lambda a: a!= '', list2)
+        print(list1)
+        print(list2)
+    return render_template("results.html", list1=list1, list2=list2)
+        
