@@ -25,31 +25,25 @@ def results():
         global data
         data = request.form['image']
         print(data)
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer sk-proj-SzMfABSwegh6iXPuHjndT3BlbkFJs3o3bUb6FdlYRoMUAIyM"
-        }
-        
-        payload = {
-            "model": "gpt-4o",
-            "messages": [
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
                 {
-                    "role":"user",
+                    "role": "user",
                     "content": [
-                        {
-                            "type": "text",
-                            "text": "What is the text paragraph inside of the ingredients section?"
-                        },
+                        {"type": "text", "text": "What are all the ingredients listed under the INGREDIENTS paragraph?"},
                         {
                             "type": "image_url",
                             "image_url": {
-                                "url": data
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
-        response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
-        print(response.json)
+                                "url": data,
+                            },
+                        },
+                    ],
+                 }
+            ],
+            max_tokens=300,
+        )
+        
+        
+        print(response.choices[0])
     return render_template("results.html")
