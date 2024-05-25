@@ -23,6 +23,8 @@
       </div>
       <div class="flex items-center place-content-center">
         <h1 class="m-3 text-center text-3xl font-mono bg-slate-300 text-black w-48 h-10 drop-shadow-2xl rounded-md">
+        <button id = "button" onclick="run"> Display Results </button>
+        <h1 class="m-3 text-center text-3xl font-mono bg-emerald-800 w-48 h-10 rounded-md">
             RESULTS:
         </h1>
       </div>
@@ -44,14 +46,36 @@
                     <button class="btn">More Info</button>
                 </div>
             </div>
+        <div id = "grid" class="m-2.5 text-primary-content flex flex-wrap gap-1.5 ">
             
         </div>
      </div>
       
+    <script> 
+      function run(){
+        var val = {{ list1 }}
+        var val2 = {{ list2 }}
+        for (let i = 0; i < val.length; i++){
+          if (val[i] !== '' && val[i] !== ' '){
+            var name = val[i];
+            var text =  val2[i]
+            
+            
+           
+            
+          }
+        }
+      }
+$("#button").onClick
+
       
+
+    </script>
       
     
 
 
 </body>
+
+
 </html>
