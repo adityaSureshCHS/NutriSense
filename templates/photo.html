@@ -66,10 +66,10 @@
   }
 
   function sendData(dataURL){
-    console.log("hi");
+    console.log("hi")
     $.ajax({
       type: "POST",
-      url:redirect(path),
+      url:"{{ path }}",
       data: {
         image: dataURL
       }

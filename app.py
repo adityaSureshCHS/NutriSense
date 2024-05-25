@@ -4,7 +4,9 @@ from flask import Flask, request, render_template, url_for, redirect
 from openai import OpenAI
 import pytesseract
 
-client = OpenAI()
+client = OpenAI(
+    api_key = os.environ.get("OPENAI_API_KEY")
+)
 
 app = Flask(__name__)
 
@@ -24,9 +26,8 @@ def results():
     if request.method == 'POST':
         global data
         data = request.form['image']
-        print(data)
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-3.5-turbo",
             messages=[
                 {
                     "role": "user",
