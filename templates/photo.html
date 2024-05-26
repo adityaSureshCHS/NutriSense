@@ -8,7 +8,18 @@
     <body>
         <div class="container">
   
-            <h1 class="title">Picture Taker</h1>
+            
+            <div class="navbar bg-base-100">
+              <div class="flex-1 text-2xl">
+                <a class="btn btn-ghost text-4xl" href="/">nutrisense</a>
+              </div>
+              <div class="flex-none">
+                <ul class="menu menu-horizontal px-1 text-xl">
+                  <li><a href="photo">Take a Photo</a></li>
+                </ul>
+              </div>
+            </div>
+            <h1 class="title text-2xl font-bold">Picture Taker</h1>
             <p class="description">Click the button below to capture a picture of the item.</p>
             <video id="camera-view" autoplay></video>
             <a href="#" class="button" onclick="takePicture()">Take Picture</a>

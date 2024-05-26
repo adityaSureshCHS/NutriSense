@@ -49,7 +49,7 @@ def results():
         list3 = {}
         for i in list1:
             params = {
-                "q": list1[i],
+                "q": i,
                 "engine": "google_images",
                 "api_key": serpapi_key
             }
