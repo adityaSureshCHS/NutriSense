@@ -45,18 +45,16 @@ def results():
         print(list1)
         print()
         print(list2)
-        list3 = {}
-        for i in list1:
+        list3 = []
+        for i in range(len(list1)):
             params = {
-                "q": i,
+                "q": list1[i],
                 "engine": "google_images",
                 "api_key": serpapi_key
             }
             search = GoogleSearch(params)
             results = search.get_dict()
-            images_searches = results["images_results"]
-            item = images_searches["thumbnail"]
-            
-            list3.append(item)
-    return render_template("results.html", list1=list1, list2=list2)
+            images_searches = results["images_results"][0].get("thumbnail")
+            '''list3.append(images_searches)'''
+    return render_template("results.html", list1=list1, list2=list2, )
         
