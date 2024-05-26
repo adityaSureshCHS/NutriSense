@@ -38,7 +38,7 @@ def results():
         global list1
         list1 = response.text.split("\n")
         model = genai.GenerativeModel('gemini-pro')
-        response2 = model.generate_content(f"Using the following ingredients: {response.text} write a short paragraph explaining what each ingredient is/does, health risks, benefits and why combined they can be either harmful or healthy.")
+        response2 = model.generate_content(f"Using the following ingredients: {response.text} write 3-4 sentences explaining what each ingredient is/does, health risks, benefits and why combined they can be either harmful or healthy.")
         
         global list2
         list2 = response2.text.split("\n")
@@ -52,6 +52,8 @@ def results():
             }
             search = GoogleSearch(params)
             results = search.get_dict()
-            related_searches = results["related_searches"]
+            images_searches = results["images_results"]
+            
+            list3.append(images_searches["thumbnail"])
     return render_template("results.html", list1=list1, list2=list2)
         
