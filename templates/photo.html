@@ -45,7 +45,9 @@
     
     // Hide other buttons and show the proceed button
     $('.button, .upload-button, .file-input').hide();
-    $('.proceed-button').show();
+    $('.proceed').show();
+    
+    
     sendData(dataURL);
   }
 
@@ -61,8 +63,8 @@
 
         // Hide other buttons and show the proceed button
         $('.button, .upload-button, .file-input').hide();
-        $('.proceed-button').show();
-        sendData(dataURL);
+        $('.proceed').show();
+        
       };
       reader.readAsDataURL(file);
     }
