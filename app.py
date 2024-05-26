@@ -1,5 +1,4 @@
 import os 
-import cv2 as cv
 from flask import Flask, request, render_template, url_for, redirect
 from openai import OpenAI
 import pytesseract
@@ -56,7 +55,8 @@ def results():
             search = GoogleSearch(params)
             results = search.get_dict()
             images_searches = results["images_results"]
+            item = images_searches["thumbnail"]
             
-            list3.append(images_searches["thumbnail"])
+            list3.append(item)
     return render_template("results.html", list1=list1, list2=list2)
         
