@@ -8,7 +8,9 @@ import PIL.Image
 from urllib import request as req
 import io
 import base64
+from serpapi import GoogleSearch
 
+serpapi_key = "c7234f84164bd51747bea9f01a96ed502b6b187cceffd7a9f934d6cbe77701dc"
 gemini_key = "AIzaSyCvHRoH7oHsJa8J2D4kZIOJ5qxG4ZNHXm0"
 genai.configure(api_key = gemini_key)
 app = Flask(__name__)
@@ -41,7 +43,15 @@ def results():
         global list2
         list2 = response2.text.split("\n")
         filter(lambda a: a!= '', list2)
-        print(list1)
-        print(list2)
+        list3 = {}
+        for i in list1:
+            params = {
+                "q": list1[i],
+                "engine": "google_images",
+                "api_key": serpapi_key
+            }
+            search = GoogleSearch(params)
+            results = search.get_dict()
+            related_searches = results["related_searches"]
     return render_template("results.html", list1=list1, list2=list2)
         
