@@ -34,7 +34,7 @@ def results():
         data = req.urlopen(data).read()
         img = PIL.Image.open(io.BytesIO(data))
         model = genai.GenerativeModel('gemini-pro-vision')
-        response = model.generate_content(["Identify the ingredients. List each ingredient. Do not add extra characters, dashes, parenthesis, or commas. List the ingredients", img])
+        response = model.generate_content(["Identify the ingredients. List each ingredient. Even if an ingredient is made of more than one word, separate the ingredient. Do not add extra characters, dashes, parenthesis, or commas. List the ingredients", img])
         global list1
         list1 = response.text.split("\n")
         model = genai.GenerativeModel('gemini-pro')
@@ -43,6 +43,9 @@ def results():
         global list2
         list2 = response2.text.split("\n")
         filter(lambda a: a!= '', list2)
+        print(list1)
+        print()
+        print(list2)
         list3 = {}
         for i in list1:
             params = {
